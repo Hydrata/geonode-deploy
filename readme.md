@@ -1,19 +1,5 @@
 # geonode-deploy
 
-### A note on use-cases
-Deploying and maintaining geonode can be complex. The simplest method is NOT
-to use this repository. The simplest method is to use docker via the dockerfile in the
-main geonode repository. If you are new to web development and learning geonode, that 
-is the path we recommend you.
-
-However, if you
-* require more granular control over your geonode machines and operating systems,
-* are maintaining other ansible projects on your geonode machines,
-* don't want to/can't use docker for a specific reason,
-* have experience using ansible and/or managing applications running within linux/debian/ubuntu,
-
-then this repo is worth a look.
-
 ### Overview
 There are two related projects here.
 
@@ -82,3 +68,19 @@ Now simply:
 cd ../geonode-deploy/vagrant
 vagrant up
 ```
+
+
+### A note on use-cases
+Deploying and maintaining geonode can be complex. The simplest method is NOT
+to use this repository. The simplest method is to use docker via the dockerfile in the
+main geonode repository. If you are new to web development and learning geonode, that 
+is the path we recommend you.
+
+However, if you
+* require more granular control over your geonode machines and operating systems,
+* want to customise the front-end code, environment or add additional projects,
+* are maintaining other ansible projects on your geonode machines,
+* don't want to/can't use docker for a specific reason,
+* have experience using ansible and/or managing applications running within linux/debian/ubuntu,
+
+then this repo is worth a look.
