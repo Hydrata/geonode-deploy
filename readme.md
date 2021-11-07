@@ -1,4 +1,4 @@
-#geonode-deploy
+# geonode-deploy
 
 ### A note on use-cases
 Deploying and maintaining geonode can be complex. The simplest method is NOT
