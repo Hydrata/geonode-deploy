@@ -1,0 +1,27 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-20.04"
+  config.vm.host_name = "localhost"
+  config.vm.box_check_update = true
+  config.vm.network "private_network", ip: "10.10.10.3"
+  config.vm.network :forwarded_port, host: 2200, guest: 22
+  config.vm.network :forwarded_port, host: 80, guest: 80  # localhost
+  config.vm.network :forwarded_port, host: 8000, guest: 8000  # localhost proxy for mapstore
+  config.vm.network :forwarded_port, host: 8080, guest: 8080  # geoserver
+  config.vm.network :forwarded_port, host: 5433, guest: 5432  # postgres - we use 5433 in case the host is already running postgres
+  config.vm.network :forwarded_port, host: 5555, guest: 5555  # flower
+  config.vm.network :forwarded_port, host: 15672, guest: 15672  # rabbit ui
+  config.vm.synced_folder "../../geonode-deploy", "/opt/geonode-deploy"
+  config.vm.synced_folder "../../hydrata", "/opt/my_geonode_project", create: true
+  config.vm.synced_folder "../../geonode", "/opt/geonode", create: true
+  config.vm.synced_folder "../../geonode-mapstore-client", "/opt/geonode-mapstore-client", create: true
+  config.vm.provision "bootstrap", type: "shell", path: "bootstrap.sh", privileged: false
+
+  config.vm.provider "virtualbox" do |vb|
+      vb.memory = "8192"
+      # vb.gui = true
+  end
+
+end
